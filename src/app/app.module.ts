@@ -1,9 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
-import { CreateJobComponent } from './create-job/create-job.component';
+import { CreateJobComponent } from './jobs/create-job/create-job.component';
 import { FormsModule } from '@angular/forms';
 import {
   MatInputModule,
@@ -13,14 +13,16 @@ import {
   MatExpansionModule
 } from '@angular/material';
 import { HeaderComponent } from './header/header.component';
-import { ListJobsComponent } from './list-jobs/list-jobs.component';
+import { ListOrdersComponent } from './orders/list-orders/list-orders.component';
+import { OrdersService } from './orders/orders.service';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateJobComponent,
     HeaderComponent,
-    ListJobsComponent
+    ListOrdersComponent
   ],
   imports: [
     BrowserModule,
@@ -30,9 +32,10 @@ import { ListJobsComponent } from './list-jobs/list-jobs.component';
     MatButtonModule,
     MatCardModule,
     MatToolbarModule,
-    MatExpansionModule
+    MatExpansionModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [OrdersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,11 @@
+<mat-accordion multi="true" *ngIf="orders.length > 0">
+  <mat-expansion-panel *ngFor="let order of orders" >
+    <mat-expansion-panel-header>
+      {{ order.title }}
+    </mat-expansion-panel-header>
+    <p>{{ order.content }}</p>
+  </mat-expansion-panel>
+</mat-accordion>
+<mat-card>
+  <p *ngIf="orders.length <= 0">No orders found!</p>
+</mat-card>
