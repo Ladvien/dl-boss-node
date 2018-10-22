@@ -1,0 +1,8 @@
+{
+	"address": "192.168.1.88",
+    "name": "mac-book-2015",
+    "busy": false,
+    "dataPath": "/Users/cthomasbrittain/bit-dl/data/lot-data/lot_encoded/lot_data_compressed/all_cocs/",
+    "writePath": "/Users/cthomasbrittain/dl-data/output/",
+    "active": true
+}
