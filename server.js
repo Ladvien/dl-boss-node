@@ -11,7 +11,6 @@ const work = require('./backend/services/work');
 var {Job} = require('./backend/database-services/models/job');
 var {Order} = require('./backend/database-services/models/order');
 
-
 const bossAddress = 'http://maddatum.com'
 
 // Server setup.

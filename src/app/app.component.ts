@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'dl-desk';
+
+  orders = [];
+
+  onOrdersReceived(orders) {
+    this.orders = orders;
+    console.log(orders);
+  }
 }

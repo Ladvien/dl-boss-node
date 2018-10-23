@@ -1,5 +1,5 @@
 <app-header></app-header>
 <main>
-  <app-list-orders></app-list-orders>
+  <app-list-orders (ordersReceived)="onOrdersReceived($event)"></app-list-orders>
   <app-job-create></app-job-create>
 </main>
