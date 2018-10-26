@@ -7,6 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'dl-desk';
+  events: string[] = [];
+  opened: boolean;
 
   orders = [];
 

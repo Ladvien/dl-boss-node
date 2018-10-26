@@ -1,16 +1,17 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs';
 import { OrdersService } from '../orders.service';
 import { Order } from '../order.model';
+import { GlobalService } from '../../globals.service';
 
 @Component({
   selector: 'app-list-orders',
   templateUrl: './list-orders.component.html',
   styleUrls: ['./list-orders.component.css']
 })
-export class ListOrdersComponent implements OnInit {
+export class ListOrdersComponent implements OnInit, OnDestroy {
   @Output() ordersReceived = new EventEmitter();
-  constructor(public ordersServices: OrdersService) {
+  constructor(public ordersServices: OrdersService, public globals: GlobalService) {
 
   }
 
@@ -27,5 +28,10 @@ export class ListOrdersComponent implements OnInit {
   onOrdersReceived(orders) {
     this.orders = orders;
   }
+
+  ngOnDestroy() {
+    this.ordersServices.getOrders.unsubscribe();
+  }
+
 
 }

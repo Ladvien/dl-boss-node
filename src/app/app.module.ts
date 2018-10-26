@@ -5,37 +5,35 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { CreateJobComponent } from './jobs/create-job/create-job.component';
 import { FormsModule } from '@angular/forms';
-import {
-  MatInputModule,
-  MatButtonModule,
-  MatCardModule,
-  MatToolbarModule,
-  MatExpansionModule
-} from '@angular/material';
+
+// Custom
 import { HeaderComponent } from './header/header.component';
 import { ListOrdersComponent } from './orders/list-orders/list-orders.component';
+import { ListJobsComponent } from './jobs/list-jobs/list-jobs.component';
 import { OrdersService } from './orders/orders.service';
-
+import { GlobalService } from './globals.service';
+import { MaterialModule } from './material.module';
+import { HomeComponent } from './home.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateJobComponent,
     HeaderComponent,
-    ListOrdersComponent
+    ListOrdersComponent,
+    ListJobsComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule,
-    MatInputModule,
-    MatButtonModule,
-    MatCardModule,
-    MatToolbarModule,
-    MatExpansionModule,
-    HttpClientModule
+    MaterialModule,
+    HttpClientModule,
+    AppRoutingModule
   ],
-  providers: [OrdersService],
+  providers: [OrdersService, GlobalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

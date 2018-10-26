@@ -1,24 +1,6 @@
-var {Assignment} = require('../database-services/models/assignment');
 var {Outcome} = require('../database-services/models/outcome');
 var {Job} = require('../database-services/models/job');
 var {Order} = require('../database-services/models/order');
-
-var assign = function(assignment) {
-    return new Promise((resolve, reject) => {
-        try {
-            var assignmentDoc = new Assignment(assignment)
-            assignmentDoc.save()
-            .then((doc) => {
-                doc.save()
-                .then((response) => {
-                   resolve(response);
-                });
-            });
-        } catch (err) {
-            reject({'error': 'Problem assigning work. ', 'assignment': assignment})
-        }
-    })
-}
 
 var file = function(outcome) {
     return new Promise((resolve, reject) => {
@@ -61,6 +43,5 @@ var create = function(job) {
     })
 }
 
-module.exports = {assign,
-                 file,
+module.exports = {file,
                  create}
