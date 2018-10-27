@@ -8,15 +8,20 @@ var file = function(outcome) {
             // Create and try to save a new Outcome from WorkNode
             var outcomeDoc = new Outcome(outcome)
             outcomeDoc.save()
-            .then((outcomeDoc) => {
+            .then((outcomeDoc, error) => {
+                console.log(JSON.stringify(outcomeDoc));
+                console.log(JSON.stringify(error));
                 console.log(`Saved ${outcomeDoc._id}`)
+                // Find the Order associated with the Outcome.
                 Order.findOne({"_id": outcomeDoc.orderId }).then((order)=> {
-                    console.log(JSON.stringify(order));
-                    order.status = outcomeDoc.status;
                     console.log(`Found related Order ${order._id}`)
+                    // Update the Order.status with Outcome.status
+                    order.status = outcomeDoc.status;
+                    // Return the Order to the DB with updated status.
                     order.save()
                     .then((orderDoc) => {
                         console.log(`Updated Order ${orderDoc._id}'s status to ${orderDoc.status}`)
+                        // Provide a response to the WorkerNode.
                         resolve(orderDoc);
                     });
                 });
