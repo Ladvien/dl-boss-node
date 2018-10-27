@@ -5,13 +5,13 @@ var {Order} = require('../database-services/models/order');
 var file = function(outcome) {
     return new Promise((resolve, reject) => {
         try {
-            var outcomeDoc = new Outcome(outcome)
-            outcomeDoc.save()
-            .then((outcomeDoc) => {
-                outcomeDoc.save()
+            var outcome = new Outcome(outcome)
+            outcome.save()
+            .then((outcome) => {
+                outcome.save()
                 .then((outcome) => {
                     console.log(`Saved ${outcome._id}`)
-                    Order.find({"_id": outcomeDoc.orderId }).then((orderDoc) => {
+                    Order.find({"_id": outcome.orderId }).then((orderDoc) => {
                         console.log(`Found related Order ${orderDoc._id}`)
                         orderDoc.status = 'completed';
                         orderDoc.save((orderDoc) => {
