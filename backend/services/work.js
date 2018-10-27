@@ -5,21 +5,19 @@ var {Order} = require('../database-services/models/order');
 var file = function(outcome) {
     return new Promise((resolve, reject) => {
         try {
+            // Create and try to save a new Outcome from WorkNode
             var outcomeDoc = new Outcome(outcome)
             outcomeDoc.save()
             .then((outcomeDoc) => {
-                outcomeDoc.save()
-                .then((outcomeDoc) => {
-                    console.log(`Saved ${outcomeDoc._id}`)
-                    Order.findOne({"_id": outcomeDoc.orderId }).then((order)=> {
-                        console.log(JSON.stringify(order));
-                        order.status = outcomeDoc.status;
-                        console.log(`Found related Order ${order._id}`)
-                        order.save()
-                        .then((orderDoc) => {
-                            console.log(`Updated Order ${orderDoc._id}'s status to ${orderDoc.status}`)
-                            resolve(orderDoc);
-                        });
+                console.log(`Saved ${outcomeDoc._id}`)
+                Order.findOne({"_id": outcomeDoc.orderId }).then((order)=> {
+                    console.log(JSON.stringify(order));
+                    order.status = outcomeDoc.status;
+                    console.log(`Found related Order ${order._id}`)
+                    order.save()
+                    .then((orderDoc) => {
+                        console.log(`Updated Order ${orderDoc._id}'s status to ${orderDoc.status}`)
+                        resolve(orderDoc);
                     });
                 });
             });
