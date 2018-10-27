@@ -19,7 +19,7 @@ var file = function(outcome) {
                             res.send(orderDoc);
                         });
                     });
-                   resolve(response);
+                   resolve(outcome);
                 });
             });
         } catch (err) {
