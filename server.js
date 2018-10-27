@@ -171,7 +171,7 @@ app.get('/retrieve/:type/:id?/:param1?', (req, res) => {
             case 'outcome':
                 if (!id)  { throw {'error': 'Missing Id'} }
                 console.log(`Requested Outcome ${id}`);
-                Outcome.findOne({'jobId': id })
+                Outcome.findOne({'orderId': id })
                 .then((response) => {
                     res.send(response);
                 });

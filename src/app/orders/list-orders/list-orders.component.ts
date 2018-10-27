@@ -32,7 +32,7 @@ export class ListOrdersComponent implements OnInit, OnDestroy {
         this.workerNodeService.getJob(order)
         .subscribe((job: Job) => {
           order.job = job;
-          this.workerNodeService.getOutcomes(order.job)
+          this.workerNodeService.getOutcomes(order)
           .subscribe((outcome: Outcome) => {
             order.outcome = outcome;
             this.orders.push(order);
