@@ -29,6 +29,7 @@ var create = function(job) {
                 .then((response) => {
                     let job = response;
                     var orderDoc = new Order({'jobId': job._id, 
+                                              'projectName': job.projectName,
                                               'createdDate': new Date(),
                                               'status': 'unassigned'})
                     orderDoc.save()
