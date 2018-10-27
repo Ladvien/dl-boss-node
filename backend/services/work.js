@@ -11,10 +11,9 @@ var file = function(outcome) {
                 outcomeDoc.save()
                 .then((outcomeDoc) => {
                     console.log(`Saved ${outcomeDoc._id}`)
-                    Order.find({"_id": outcomeDoc.orderId }).then((err, order)=> {
+                    Order.find({"_id": outcomeDoc.orderId }).then((order)=> {
                         console.log(JSON.stringify(order));
-                        console.log(JSON.stringify(err));
-                        // console.log(`Found related Order ${order._id}`)
+                        console.log(`Found related Order ${order._id}`)
                         order.status = 'completed';
                         order.save()
                         .then((orderDoc) => {
