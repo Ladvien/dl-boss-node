@@ -13,6 +13,7 @@ var file = function(outcome) {
                     console.log(`Saved ${outcomeDoc._id}`)
                     Order.findOne({"_id": outcomeDoc.orderId }).then((order)=> {
                         console.log(JSON.stringify(order));
+                        order.status = outcomeDoc.status;
                         console.log(`Found related Order ${order._id}`)
                         order.save()
                         .then((orderDoc) => {
