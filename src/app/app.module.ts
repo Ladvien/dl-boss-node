@@ -10,11 +10,11 @@ import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 import { ListOrdersComponent } from './orders/list-orders/list-orders.component';
 import { ListJobsComponent } from './jobs/list-jobs/list-jobs.component';
-import { OrdersService } from './orders/orders.service';
 import { GlobalService } from './globals.service';
 import { MaterialModule } from './material.module';
 import { HomeComponent } from './home.component';
 import { AppRoutingModule } from './app-routing.module';
+import { WorkerNodeService } from './worker-node.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +33,7 @@ import { AppRoutingModule } from './app-routing.module';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [OrdersService, GlobalService],
+  providers: [GlobalService, WorkerNodeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,8 +1,8 @@
 import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
-import { Observable } from 'rxjs';
-import { OrdersService } from '../orders.service';
 import { Order } from '../order.model';
 import { GlobalService } from '../../globals.service';
+import { WorkerNodeService } from 'src/app/worker-node.service';
+import { Job } from '../../jobs/job.model';
 
 @Component({
   selector: 'app-list-orders',
@@ -11,17 +11,24 @@ import { GlobalService } from '../../globals.service';
 })
 export class ListOrdersComponent implements OnInit, OnDestroy {
   @Output() ordersReceived = new EventEmitter();
-  constructor(public ordersServices: OrdersService, public globals: GlobalService) {
+  @Output() jobsReceived = new EventEmitter();
+  constructor(public workerNodeService: WorkerNodeService, public globals: GlobalService) {
 
   }
 
+  panelOpenState: Boolean = false;
   orders: Order[] = [];
+  jobs: Job[] = [];
 
   ngOnInit() {
-    this.ordersServices.getOrders
+    this.workerNodeService.getOrders
     .subscribe((event) => {
       this.orders = event;
       this.ordersReceived.emit(event);
+      this.workerNodeService.getJobs
+      .subscribe((job: Job) => {
+        this.jobs.push(job);
+      });
     });
   }
 
@@ -30,7 +37,7 @@ export class ListOrdersComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.ordersServices.getOrders.unsubscribe();
+    this.workerNodeService.getOrders.unsubscribe();
   }
 
 

@@ -1,4 +1,6 @@
-interface Job {
+export interface Job {
+        jobId: String;
+        orderId: String;
         dataFileName: String;
         scriptName: String;
         projectName: String;

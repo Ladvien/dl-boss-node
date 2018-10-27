@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Job } from './jobs/job.model';
 
 @Component({
   selector: 'app-root',
@@ -11,9 +12,14 @@ export class AppComponent {
   opened: boolean;
 
   orders = [];
+  jobs: Job[] = [];
 
   onOrdersReceived(orders) {
     this.orders = orders;
     console.log(orders);
+  }
+
+  onJobReceived(jobs) {
+    this.jobs = jobs;
   }
 }
