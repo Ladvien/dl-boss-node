@@ -7,9 +7,18 @@ var file = function(outcome) {
         try {
             var outcomeDoc = new Outcome(outcome)
             outcomeDoc.save()
-            .then((doc) => {
-                doc.save()
-                .then((response) => {
+            .then((outcomeDoc) => {
+                outcomeDoc.save()
+                .then((outcome) => {
+                    console.log(`Saved ${outcome._id}`)
+                    Order.find({"_id": outcomeDoc.orderId }).then((orderDoc) => {
+                        console.log(`Found related Order ${orderDoc._id}`)
+                        orderDoc.status = 'completed';
+                        orderDoc.save((orderDoc) => {
+                            console.log(`Updated Order ${orderDoc._id}'s status to ${orderDoc.status}`)
+                            res.send(orderDoc);
+                        });
+                    });
                    resolve(response);
                 });
             });
