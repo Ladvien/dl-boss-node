@@ -170,6 +170,7 @@ app.get('/retrieve/:type/:id?/:param1?', (req, res) => {
                 break;
             case 'outcome':
                 if (!id)  { throw {'error': 'Missing Id'} }
+                console.log(`Requested Outcome ${{'jobId': id }}`);
                 Outcome.findOne({'jobId': id })
                 .then((response) => {
                     res.send(response);
