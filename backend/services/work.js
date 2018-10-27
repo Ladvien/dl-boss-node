@@ -14,7 +14,6 @@ var file = function(outcome) {
                     Order.findOne({"_id": outcomeDoc.orderId }).then((order)=> {
                         console.log(JSON.stringify(order));
                         console.log(`Found related Order ${order._id}`)
-                        order.status = 'completed';
                         order.save()
                         .then((orderDoc) => {
                             console.log(`Updated Order ${orderDoc._id}'s status to ${orderDoc.status}`)
