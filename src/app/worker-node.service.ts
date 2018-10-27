@@ -48,7 +48,6 @@ export class WorkerNodeService {
 
   getOutcomes (order: Order) {
     return Observable.create((observer: Observer<Outcome>) => {
-      console.log(this.globals.bossAddress + '/retrieve/outcome/' + order['_id']);
       this.http.get(this.globals.bossAddress + '/retrieve/outcome/' + order['_id'])
       .subscribe((outcome: Outcome) => {
         observer.next(outcome);

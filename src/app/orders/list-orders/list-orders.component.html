@@ -5,13 +5,14 @@
   <mat-expansion-panel *ngFor="let order of orders">
     <mat-expansion-panel-header>
       <mat-panel-title>
+        Name:
         {{ order.job.projectName }}
       </mat-panel-title>
       <mat-panel-description>
-        {{order.createdDate | date:'yyyy-MM-dd HH:MM:SS a'}}
+        {{ order.job.loss}}: {{ order.outcome.metric }}
       </mat-panel-description>
       <mat-panel-description>
-        {{ order.outcome }}
+        {{order.createdDate | date:'yyyy-MM-dd HH:MM:SS a'}}
       </mat-panel-description>
     </mat-expansion-panel-header>
     <p>{{ order.job.scriptName }}</p>
