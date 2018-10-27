@@ -26,5 +26,5 @@ export interface Job {
         scalerType: String;
         hiddenLayers: Array <Object>;
         order: Object;
-        outcomes: Object;
+        outcome: Object;
 }

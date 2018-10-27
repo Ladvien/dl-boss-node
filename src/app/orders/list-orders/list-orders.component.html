@@ -11,7 +11,7 @@
         {{order.createdDate | date:'yyyy-MM-dd HH:MM:SS a'}}
       </mat-panel-description>
       <mat-panel-description>
-        
+        {{ order.outcome.metric }}
       </mat-panel-description>
     </mat-expansion-panel-header>
     <p>{{ order.job.scriptName }}</p>

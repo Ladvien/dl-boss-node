@@ -3,6 +3,7 @@ import { Order } from '../order.model';
 import { GlobalService } from '../../globals.service';
 import { WorkerNodeService } from 'src/app/worker-node.service';
 import { Job } from '../../jobs/job.model';
+import { Outcome } from 'src/app/outcomes/outcome.model';
 
 @Component({
   selector: 'app-list-orders',
@@ -20,8 +21,6 @@ export class ListOrdersComponent implements OnInit, OnDestroy {
 
   panelOpenState: Boolean = false;
   orders: Order[] = [];
-  jobs: Job[] = [];
-
   onClickExpandToggle () {
 
   }
@@ -31,10 +30,13 @@ export class ListOrdersComponent implements OnInit, OnDestroy {
     .subscribe((orders: Order[]) => {
       orders.forEach(order => {
         this.workerNodeService.getJob(order)
-        .subscribe((job) => {
+        .subscribe((job: Job) => {
           order.job = job;
-          
-          // this.orders.push(order);
+          this.workerNodeService.getOutcomes(order.job)
+          .subscribe((outcome: Outcome) => {
+            order.outcome = outcome;
+            this.orders.push(order);
+          });
         });
       });
     });

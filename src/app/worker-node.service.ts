@@ -46,8 +46,13 @@ export class WorkerNodeService {
     return job;
   }
 
-  // getOutcomes (jobs: Job[]) {
-
-  // }
+  getOutcomes (job: Job) {
+    return Observable.create((observer: Observer<Outcome>) => {
+      this.http.get(this.globals.bossAddress + '/retrieve/outcome/' + job.id)
+      .subscribe((outcome: Outcome) => {
+        observer.next(outcome);
+      });
+  });
+  }
 
 }
