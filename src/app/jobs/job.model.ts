@@ -1,6 +1,7 @@
 export interface Job {
-        jobId: String;
+        id: String;
         orderId: String;
+        orderDate: Date;
         dataFileName: String;
         scriptName: String;
         projectName: String;
@@ -24,4 +25,6 @@ export interface Job {
         maxDependentVarValue: Number;
         scalerType: String;
         hiddenLayers: Array <Object>;
+        order: Object;
+        outcomes: Object;
 }

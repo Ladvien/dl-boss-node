@@ -1,15 +1,26 @@
-<mat-accordion multi="true" *ngIf="jobs.length > 0">
-  <mat-expansion-panel *ngFor="let job of jobs" >
+<h2>
+  Orders
+</h2>
+<mat-accordion multi="true" *ngIf="orders.length > 0">
+  <mat-expansion-panel *ngFor="let order of orders">
     <mat-expansion-panel-header>
-      {{ job.projectName }}
+      <mat-panel-title>
+        {{ order.job.projectName }}
+      </mat-panel-title>
+      <mat-panel-description>
+        {{order.createdDate | date:'yyyy-MM-dd HH:MM:SS a'}}
+      </mat-panel-description>
+      <mat-panel-description>
+        
+      </mat-panel-description>
     </mat-expansion-panel-header>
-      <p>{{ job.scriptName }}</p>
-      <p>{{ job.batchSize }}</p>
-      <p>{{ job.dependentVariable }}</p>
-      <p>{{ job.epochs }}</p>
-      <p>{{ job.hiddenLayers }}</p>
-    </mat-expansion-panel>
+    <p>{{ order.job.scriptName }}</p>
+    <p>{{ order.job.batchSize }}</p>
+    <p>{{ order.job.dependentVariable }}</p>
+    <p>{{ order.job.epochs }}</p>
+    <p>{{ order.job.hiddenLayers }}</p>
+  </mat-expansion-panel>
 </mat-accordion>
 <mat-card>
-  <p *ngIf="jobs.length <= 0">No orders found!</p>
+  <p *ngIf="orders.length <= 0">No orders found!</p>
 </mat-card>

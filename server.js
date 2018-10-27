@@ -10,6 +10,7 @@ const work = require('./backend/services/work');
 // Database collection
 var {Job} = require('./backend/database-services/models/job');
 var {Order} = require('./backend/database-services/models/order');
+var {Outcome} =require('./backend/database-services/models/outcome');
 
 const bossAddress = 'http://localhost:3000'
 
@@ -163,6 +164,13 @@ app.get('/retrieve/:type/:id?/:param1?', (req, res) => {
             case 'job':
                 if (!id)  { throw {'error': 'Missing Id'} }
                 Job.findOne({'_id': id })
+                .then((response) => {
+                    res.send(response);
+                });
+                break;
+            case 'outcome':
+                if (!id)  { throw {'error': 'Missing Id'} }
+                Outcome.findOne({'_id': id })
                 .then((response) => {
                     res.send(response);
                 });

@@ -16,18 +16,26 @@ export class ListOrdersComponent implements OnInit, OnDestroy {
 
   }
 
+  expanded: Boolean = true;
+
   panelOpenState: Boolean = false;
   orders: Order[] = [];
   jobs: Job[] = [];
 
+  onClickExpandToggle () {
+
+  }
+
   ngOnInit() {
     this.workerNodeService.getOrders
-    .subscribe((event) => {
-      this.orders = event;
-      this.ordersReceived.emit(event);
-      this.workerNodeService.getJobs
-      .subscribe((job: Job) => {
-        this.jobs.push(job);
+    .subscribe((orders: Order[]) => {
+      orders.forEach(order => {
+        this.workerNodeService.getJob(order)
+        .subscribe((job) => {
+          order.job = job;
+          
+          // this.orders.push(order);
+        });
       });
     });
   }
@@ -37,7 +45,7 @@ export class ListOrdersComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.workerNodeService.getOrders.unsubscribe();
+
   }
 
 
