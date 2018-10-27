@@ -15,6 +15,7 @@ import { MaterialModule } from './material.module';
 import { HomeComponent } from './home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { WorkerNodeService } from './worker-node.service';
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { WorkerNodeService } from './worker-node.service';
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FlexLayoutModule
   ],
   providers: [GlobalService, WorkerNodeService],
   bootstrap: [AppComponent]

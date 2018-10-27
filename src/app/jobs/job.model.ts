@@ -25,6 +25,4 @@ export interface Job {
         maxDependentVarValue: Number;
         scalerType: String;
         hiddenLayers: Array <Object>;
-        order: Object;
-        outcome: Object;
 }
