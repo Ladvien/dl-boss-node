@@ -18,10 +18,9 @@ var file = function(outcome) {
                         order.save()
                         .then((orderDoc) => {
                             console.log(`Updated Order ${orderDoc._id}'s status to ${orderDoc.status}`)
-                            res.send(orderDoc);
+                            resolve(orderDoc);
                         });
                     });
-                   resolve(outcomeDoc);
                 });
             });
         } catch (err) {
