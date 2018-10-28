@@ -1,4 +1,4 @@
-import { Outcome } from '../outcomes/outcome.model';
+import { Outcome } from '../../work/outcomes/outcome.model';
 import { Job } from '../jobs/job.model';
 
 export interface Order {

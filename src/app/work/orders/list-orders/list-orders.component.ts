@@ -1,9 +1,9 @@
 import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { Order } from '../order.model';
-import { GlobalService } from '../../globals.service';
+import { GlobalService } from '../../../globals.service';
 import { WorkerNodeService } from 'src/app/worker-node.service';
 import { Job } from '../../jobs/job.model';
-import { Outcome } from 'src/app/outcomes/outcome.model';
+import { Outcome } from '../../../work/outcomes/outcome.model';
 
 @Component({
   selector: 'app-list-orders',
@@ -21,6 +21,8 @@ export class ListOrdersComponent implements OnInit, OnDestroy {
 
   panelOpenState: Boolean = false;
   orders: Order[] = [];
+  completeOrders: Order[] = [];
+  
   onClickExpandToggle () {
 
   }
@@ -34,7 +36,13 @@ export class ListOrdersComponent implements OnInit, OnDestroy {
           order.job = job;
           this.workerNodeService.getOutcomes(order)
           .subscribe((outcome: Outcome) => {
-            order.outcome = outcome;
+            if (outcome) {
+              order.outcome = outcome;
+              this.completeOrders.push(order);
+              this.completeOrders.sort((a, b) => a.outcome.metric < b.outcome.metric ? -1 : a.outcome.metric > b.outcome.metric ? 1 : 0);
+            } else {
+              order.outcome = outcome;
+            }
             this.orders.push(order);
           });
         });
