@@ -11,23 +11,41 @@ export class WorkerNodeService {
 
   constructor(public globals: GlobalService, private http: HttpClient) {}
 
-  getOrders = new Observable((observer) => {
-      this.http.get(this.globals.bossAddress + '/retrieve/order')
-      .subscribe((orders: Order[]) => {
-          observer.next(orders);
-      });
-  });
+  regressionOrders: Order[] = [];
+  categoricalOrders: Order[] = [];
 
-  getJobs (orders: Order[]) {
-    return Observable.create((observer: Observer<Job>) => {
-      orders.forEach(order => {
-        this.http.get(this.globals.bossAddress + '/retrieve/job/' + order.jobId)
-        .subscribe((job: Job) => {
-          job.orderId = order.id;
-          job.orderDate = order.createdDate;
-          observer.next(job);
+  getOrdersFull = new Observable((observer) => {
+    this.http.get(this.globals.bossAddress + '/retrieve/order')
+    .subscribe((orders: Order[]) => {
+      this.attachJobs(orders)
+      .subscribe((ordersJobs: Order[]) => {
+        this.attachOutcomes(orders)
+        .subscribe((ordersFull: Order[]) => {
+          observer.next(ordersFull);
         });
       });
+    });
+  });
+
+  getOrders  = new Observable((observer) => {
+    this.http.get(this.globals.bossAddress + '/retrieve/order')
+    .subscribe((orders: Order[]) => {
+      observer.next(orders);
+    });
+  });
+
+
+  attachJobs (orders: Order[]) {
+    const ordersWithJobs: Order[] = [];
+    return Observable.create(async (observer: Observer<Order[]>) => {
+      for (const order of orders) {
+        await this.http.get(this.globals.bossAddress + '/retrieve/job/' + order.jobId).toPromise()
+        .then((job) => {
+          order.job = <Job> job;
+          ordersWithJobs.push(order);
+        });
+      }
+      observer.next(ordersWithJobs);
     });
   }
 
@@ -46,13 +64,29 @@ export class WorkerNodeService {
     return job;
   }
 
-  getOutcomes (order: Order) {
+  getOutcome (order: Order) {
     return Observable.create((observer: Observer<Outcome>) => {
       this.http.get(this.globals.bossAddress + '/retrieve/outcome/' + order['_id'])
       .subscribe((outcome: Outcome) => {
         observer.next(outcome);
       });
-  });
+    });
   }
+
+  attachOutcomes (orders: Order[]) {
+    const ordersWithOutcomes: Order[] = [];
+    return Observable.create(async (observer: Observer<Order[]>) => {
+      for (const order of orders) {
+        await this.http.get(this.globals.bossAddress + '/retrieve/outcome/' + order['_id']).toPromise()
+        .then((outcome) => {
+          order.outcome = <Outcome> outcome;
+          ordersWithOutcomes.push(order);
+        });
+      }
+      observer.next(ordersWithOutcomes);
+    });
+  }
+
+
 
 }

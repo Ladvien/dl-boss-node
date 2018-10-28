@@ -1,0 +1,46 @@
+<section>
+  <mat-card fxLayout="column" fxLayoutAlign="center center">
+    <mat-accordion class="job-info" multi="true" *ngIf="completedRegressionOrders.length > 0">
+      <mat-expansion-panel *ngFor="let order of completedRegressionOrders">
+        <mat-expansion-panel-header *ngIf="order.outcome">
+          <mat-panel-title>
+            Name:
+            {{ order.job.projectName }}
+          </mat-panel-title>
+          <mat-panel-description>
+            {{ order.job.loss}}: {{ order.outcome.metric | number:'3.1-3' }}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-list dense>
+          <mat-card>
+            <div fxLayout="row" fxLayoutAlign="left center" *ngFor="let layer of order.job.hiddenLayers; index as i">
+              <div class="output"><b>Layer #</b> {{ i + 1 }}</div>
+              <div class="output"><b>Activation:</b> {{ layer.activation }}</div>
+              <div class="output"><b>Width:</b> {{ layer.widthModifier }}</div>
+              <div class="output"><b>Dropout:</b> {{ layer.dropout }}</div>
+            </div>
+          </mat-card>
+          <div class="output">Script Name: <b>&nbsp;{{ order.job.scriptName }}</b></div>
+          <div class="output">Data filename: <b>&nbsp;{{ order.job.dataFileName }}</b></div>
+          <div class="output">Dependent Variable: <b>&nbsp;{{ order.job.dependentVariable }}</b></div>
+          <div class="output">Batch Size: <b>&nbsp;{{ order.job.batchSize }}</b></div>
+          <div class="output">Epochs: <b>&nbsp;{{ order.job.epochs }}</b></div>
+          <div class="output">Optimizer: <b>&nbsp;{{ order.job.optimizer }}</b></div>
+          <div class="output">Loss: <b>&nbsp;{{ order.job.loss }}</b></div>
+          <div class="output">Learning Rate: <b>&nbsp;{{ order.job.learningRate }}</b></div>
+          <div class="output">Slow Learning Rate: <b>&nbsp;{{ order.job.slowLearningRate }}</b></div>
+          <div class="output">Principal Component Analysis Rate: <b>&nbsp;{{ order.job.pcaComponents }}</b></div>
+          <div class="output">Extra Trees Threshold: <b>&nbsp;{{ order.job.extraTreesKeepThreshd }}</b></div>
+          <div class="output">Save Weights: <b>&nbsp;{{ order.job.saveWeightsOnlyAtEnd }}</b></div>
+          <div class="output">Last Layer Activator: <b>&nbsp;{{ order.job.lastLayerActivator }}</b></div>
+          <div class="output">l1: <b>&nbsp;{{ order.job.l1 }}</b></div>
+          <div class="output">l2: <b>&nbsp;{{ order.job.l2 }}</b></div>
+          <div class="output">Minimum Value of Dependent Variable: <b>&nbsp;{{ order.job.minDependentVarValue }}</b></div>
+          <div class="output">Maximum Value of Dependent Variable: <b>&nbsp;{{ order.job.maxDependentVarValue }}</b></div>
+          <div class="output">Scaler Type: <b>&nbsp;{{ order.job.scalerType }}</b></div>
+        </mat-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-card>
+</section>
+<p *ngIf="completedRegressionOrders.length <= 0">No orders found!</p>

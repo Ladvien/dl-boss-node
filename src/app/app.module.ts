@@ -17,6 +17,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { WorkerNodeService } from './worker-node.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { WorkComponent } from './work/work.component';
+import { RegressionComponent } from './work/orders/list-orders/regression/regression.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { WorkComponent } from './work/work.component';
     ListOrdersComponent,
     ListJobsComponent,
     HomeComponent,
-    WorkComponent
+    WorkComponent,
+    RegressionComponent
   ],
   imports: [
     BrowserModule,
