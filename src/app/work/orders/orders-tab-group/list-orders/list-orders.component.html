@@ -1,7 +1,7 @@
 <section>
     <mat-card fxLayout="column" fxLayoutAlign="center center">
-      <mat-accordion class="job-info" multi="true" *ngIf="completedRegressionOrders.length > 0">
-        <mat-expansion-panel *ngFor="let order of completedRegressionOrders">
+      <mat-accordion class="job-info" multi="true" *ngIf="selectedOrders.length > 0">
+        <mat-expansion-panel *ngFor="let order of selectedOrders">
           <mat-expansion-panel-header *ngIf="order.outcome">
             <mat-panel-title>
               Name:
@@ -43,4 +43,4 @@
       </mat-accordion>
     </mat-card>
   </section>
-  <p *ngIf="completedRegressionOrders.length <= 0">No orders found!</p>
+  <p *ngIf="selectedOrders.length <= 0">No orders found!</p>

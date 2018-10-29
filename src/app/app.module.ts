@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 
 // Custom
 import { HeaderComponent } from './header/header.component';
-import { ListOrdersComponent } from './work/orders/list-orders/list-orders.component';
+import { ListOrdersComponent } from './work/orders/orders-tab-group/list-orders/list-orders.component';
 import { ListJobsComponent } from './work/jobs/list-jobs/list-jobs.component';
 import { GlobalService } from './globals.service';
 import { MaterialModule } from './material.module';
@@ -17,8 +17,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { WorkService } from './work/work.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { WorkComponent } from './work/work.component';
-import { OrderTabGroupComponent } from './work/orders/order-tab-group/order-tab-group.component';
 import { OrdersService } from './work/orders/orders.service';
+import { OrdersTabGroupComponent } from './work/orders/orders-tab-group/orders-tab-group.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +29,7 @@ import { OrdersService } from './work/orders/orders.service';
     ListJobsComponent,
     HomeComponent,
     WorkComponent,
-    OrderTabGroupComponent
+    OrdersTabGroupComponent
   ],
   imports: [
     BrowserModule,

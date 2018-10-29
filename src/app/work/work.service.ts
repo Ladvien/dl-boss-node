@@ -11,10 +11,7 @@ export class WorkService {
 
   constructor(public globals: GlobalService, private http: HttpClient) {}
 
-  regressionOrders: Order[] = [];
-  categoricalOrders: Order[] = [];
-
-  getOrdersFull = new Observable((observer) => {
+  getOrders = new Observable((observer) => {
     this.http.get(this.globals.bossAddress + '/retrieve/order')
     .subscribe((orders: Order[]) => {
       this.attachJobs(orders)
@@ -26,14 +23,6 @@ export class WorkService {
       });
     });
   });
-
-  getOrders  = new Observable((observer) => {
-    this.http.get(this.globals.bossAddress + '/retrieve/order')
-    .subscribe((orders: Order[]) => {
-      observer.next(orders);
-    });
-  });
-
 
   attachJobs (orders: Order[]) {
     const ordersWithJobs: Order[] = [];
