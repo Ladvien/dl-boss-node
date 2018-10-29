@@ -14,10 +14,11 @@ import { GlobalService } from './globals.service';
 import { MaterialModule } from './material.module';
 import { HomeComponent } from './home.component';
 import { AppRoutingModule } from './app-routing.module';
-import { WorkerNodeService } from './worker-node.service';
+import { WorkService } from './work/work.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { WorkComponent } from './work/work.component';
-import { RegressionComponent } from './work/orders/list-orders/regression/regression.component';
+import { OrderTabGroupComponent } from './work/orders/order-tab-group/order-tab-group.component';
+import { OrdersService } from './work/orders/orders.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { RegressionComponent } from './work/orders/list-orders/regression/regres
     ListJobsComponent,
     HomeComponent,
     WorkComponent,
-    RegressionComponent
+    OrderTabGroupComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +40,7 @@ import { RegressionComponent } from './work/orders/list-orders/regression/regres
     AppRoutingModule,
     FlexLayoutModule
   ],
-  providers: [GlobalService, WorkerNodeService],
+  providers: [GlobalService, WorkService, OrdersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

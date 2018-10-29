@@ -1,13 +1,13 @@
 import { Observable, Observer } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { GlobalService } from './globals.service';
-import { Job } from './work/jobs/job.model';
-import { Order } from './work/orders/order.model';
-import { Outcome } from './work/outcomes/outcome.model';
+import { GlobalService } from '../globals.service';
+import { Job } from './jobs/job.model';
+import { Order } from './orders/order.model';
+import { Outcome } from './outcomes/outcome.model';
 
 @Injectable()
-export class WorkerNodeService {
+export class WorkService {
 
   constructor(public globals: GlobalService, private http: HttpClient) {}
 
