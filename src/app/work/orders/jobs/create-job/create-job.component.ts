@@ -9,8 +9,4 @@ export class CreateJobComponent {
 
   jobType = '';
 
-  onClick() {
-    console.log('Hello');
-  }
-
 }
