@@ -1,5 +1,5 @@
-import { Outcome } from '../../work/outcomes/outcome.model';
-import { Job } from '../jobs/job.model';
+import { Outcome } from '../../work/orders/outcomes/outcome.model';
+import { Job } from '../orders/jobs/job.model';
 
 export interface Order {
     id: String;

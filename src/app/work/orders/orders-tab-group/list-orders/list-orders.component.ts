@@ -15,6 +15,8 @@ export class ListOrdersComponent implements OnInit, OnDestroy {
 
   expanded: Boolean = true;
   panelOpenState: Boolean = false;
+
+  // Only Selected Order is displayed.
   selectedOrders: Order[] = [];
   regressionOrders: Order[] = [];
   categoricalOrders: Order[] = [];
@@ -30,6 +32,16 @@ export class ListOrdersComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.workService.getOrders
     .subscribe((orders: Order[]) => {
+
+      const ordersWithOutcomes: Order[] = [];
+      orders.forEach(order => {
+        if (order.outcome) {
+          ordersWithOutcomes.push(order);
+        }
+      });
+      orders = ordersWithOutcomes;
+      orders = orders.sort((a, b) => <number> a.outcome.metric - <number> b.outcome.metric);
+
       this.regressionOrders = orders.filter((element, index, array) => {
         // Filter Orders to those with Regression Type Losses.
         return (this.globalService.regressionLossTypes.indexOf(array[index].job.loss) > -1);

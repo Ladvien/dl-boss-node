@@ -2,9 +2,9 @@ import { Observable, Observer } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { GlobalService } from '../globals.service';
-import { Job } from './jobs/job.model';
+import { Job } from './orders/jobs/job.model';
 import { Order } from './orders/order.model';
-import { Outcome } from './outcomes/outcome.model';
+import { Outcome } from './orders/outcomes/outcome.model';
 
 @Injectable()
 export class WorkService {

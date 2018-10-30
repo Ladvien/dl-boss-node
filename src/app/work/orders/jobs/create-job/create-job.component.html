@@ -1,0 +1,16 @@
+<div fxLayout="column" fxLayoutAlign="center left" class="form-container">
+    <mat-card>
+        <mat-form-field>
+            <mat-select placeholder="Job Type" [(value)]="this.jobType">
+                <mat-option value="regression">Regression</mat-option>
+            </mat-select>
+        </mat-form-field>
+        {{ this.jobType }}
+        <div [ngSwitch]="this.jobType">
+            <app-nn-regression-order-form *ngSwitchCase="'regression'"></app-nn-regression-order-form>
+            <div *ngSwitchDefault>
+                Please select job type.
+            </div>
+        </div>
+    </mat-card>
+</div>

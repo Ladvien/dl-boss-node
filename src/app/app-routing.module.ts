@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home.component';
-import { ListJobsComponent } from './work/jobs/list-jobs/list-jobs.component';
+import { ListJobsComponent } from './work/orders/jobs/list-jobs/list-jobs.component';
 import { WorkComponent } from './work/work.component';
 import { OrdersTabGroupComponent } from './work/orders/orders-tab-group/orders-tab-group.component';
 

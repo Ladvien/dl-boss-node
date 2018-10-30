@@ -1,14 +1,15 @@
 <section>
-    <mat-card fxLayout="column" fxLayoutAlign="center center">
       <mat-accordion class="job-info" multi="true" *ngIf="selectedOrders.length > 0">
         <mat-expansion-panel *ngFor="let order of selectedOrders">
           <mat-expansion-panel-header *ngIf="order.outcome">
             <mat-panel-title>
-              Name:
               {{ order.job.projectName }}
             </mat-panel-title>
             <mat-panel-description>
               {{ order.job.loss}}: {{ order.outcome.metric | number:'3.1-3' }}
+            </mat-panel-description>
+            <mat-panel-description>
+              {{ order.createdDate | date: 'yyyy-MM-dd HH:MM:SS a' }} 
             </mat-panel-description>
           </mat-expansion-panel-header>
           <mat-list dense>
@@ -41,6 +42,5 @@
           </mat-list>
         </mat-expansion-panel>
       </mat-accordion>
-    </mat-card>
   </section>
   <p *ngIf="selectedOrders.length <= 0">No orders found!</p>

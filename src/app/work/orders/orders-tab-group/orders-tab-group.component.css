@@ -1,17 +1,22 @@
 :host {
-    display: block;
-    margin-top: 1rem;
-  }
-  
-  .job-info {
-    width: 90%;
-  }
-  
-  .layer-info {
-    padding: 10px;
-    margin: 10px;
-  }
-  
-  .output {
-    padding: 3px;
-  }
+  display: block;
+  margin-top: 1rem;
+}
+
+.job-info {
+  width: 90%;
+}
+
+.layer-info {
+  padding: 10px;
+  margin: 10px;
+}
+
+.output {
+  padding: 3px;
+}
+
+.mat-card {
+  padding: 15px;
+  margin: 10px;
+}

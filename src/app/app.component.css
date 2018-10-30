@@ -12,3 +12,7 @@ main {
   height: 100%;
 }
 
+.mat-card {
+  padding: 5px;
+  margin: 10px;
+}
