@@ -1,53 +1,69 @@
-<div fxLayout="column" fxLayoutAlign="center left" class="form-container">
-    <mat-form-field>
-      <input matInput placeholder="Data filename">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput placeholder="Project Name">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput placeholder="Dependent Variable">
-    </mat-form-field>
-    <mat-form-field>
-      <mat-select placeholder="Select">
-        <mat-option value="option">rmsprop</mat-option>
-        <mat-option value="option">adam</mat-option>
-        <mat-option value="option">nadam</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput placeholder="Learning Rate">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput placeholder="Loss Function">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput placeholder="Batch size">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput placeholder="Last Layer Activation">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput placeholder="L1">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput placeholder="L2">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput placeholder="Minimum Dependent Variable Value">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput placeholder="Maximum Dependent Variable Value">
-    </mat-form-field>
-    <mat-form-field>
-      <textarea matInput placeholder="Stuff here"></textarea>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-select placeholder="Select">
-        <mat-option value="option">Option</mat-option>
-      </mat-select>
-    </mat-form-field>
-  <div fxFlex="90%" fxFlexAlign="center">
-    <button mat-raised-button color="primary">Create Job</button>
+<form>
+  <div class="form-container" fxLayout="row" fxLayoutGap="3.5%" fxLayoutAlign="center space-evenly">
+    <div fxFlex="80%" fxLayout="column" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="3.5%" fxLayoutAlign="center left">
+      <mat-form-field fxFlex>
+        <input matInput placeholder="Data filename">
+      </mat-form-field>
+      <div fxFlex>
+        <mat-form-field>
+          <input matInput placeholder="Project Name">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Dependent Variable">
+        </mat-form-field>
+      </div>
+      <mat-radio-group fxFlex>
+        <div mat-subheader class="form-item-title">Optimizer</div>
+        <div class="form-container" fxLayout="row" fxLayoutGap="3.5%" fxLayoutAlign="left space-evenly">
+          <mat-radio-button value="1">rmsprop</mat-radio-button>
+          <mat-radio-button value="2">adam</mat-radio-button>
+          <mat-radio-button value="2">nadam</mat-radio-button>
+        </div>
+      </mat-radio-group>
+      <div>
+        <mat-form-field>
+          <input matInput placeholder="Learning Rate">
+          <!-- {{ learningRateSlider.min }}
+        <mat-slider #learningRateSlider min="0.0001" max="0.9" step="0.001" color="primary"
+                    (change)="this.onLearningRateSliderChange($event)" >
+        </mat-slider>
+        {{ learningRateSlider.max }} -->
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Loss Function">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Batch size">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Epochs">
+        </mat-form-field>
+      </div>
+      <mat-form-field>
+        <input matInput placeholder="Last Layer Activation">
+      </mat-form-field>
+      <div>
+        <mat-form-field>
+          <input matInput placeholder="L1">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="L2">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Min Dependent Variable">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Max Dependent Variable">
+        </mat-form-field>
+      </div>
+      <mat-form-field>
+        <textarea matInput placeholder="Stuff here"></textarea>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder="Select">
+          <mat-option value="option">Option</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
   </div>
-</div>
+</form>

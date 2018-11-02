@@ -168,6 +168,12 @@ app.get('/retrieve/:type/:id?/:param1?', (req, res) => {
                     res.send(response);
                 });
                 break;
+            case 'recent-job':
+                Job.findOne({}, { sort: {$natural:-1} })
+                .then((response) => {
+                    res.send(response);
+                });
+                break;
             case 'outcome':
                 if (!id)  { throw {'error': 'Missing Id'} }
                 Outcome.findOne({'orderId': id })

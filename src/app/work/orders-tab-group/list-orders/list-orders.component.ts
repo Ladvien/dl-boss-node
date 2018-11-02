@@ -1,8 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { GlobalService } from '../../../../globals.service';
-import { WorkService } from '../../../work.service';
-import { Order } from '../../../../work/orders/order.model';
-import { OrdersService } from '../../orders.service';
+import { GlobalService } from '../../../globals.service';
+import { WorkService } from '../../work.service';
+import { Order } from '../../../work/orders/order.model';
 
 @Component({
   selector: 'app-list-orders',
@@ -22,7 +21,6 @@ export class ListOrdersComponent implements OnInit, OnDestroy {
   categoricalOrders: Order[] = [];
 
   constructor(public workService: WorkService,
-              public ordersService: OrdersService,
               public globalService: GlobalService) {}
 
   onClickExpandToggle () {

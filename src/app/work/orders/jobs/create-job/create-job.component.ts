@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
 
+enum JobTypeSelections {
+  regression = 'regression',
+  classification = 'classification'
+}
+
 @Component({
   selector: 'app-job-create',
   templateUrl: './create-job.component.html',
@@ -7,6 +12,6 @@ import { Component } from '@angular/core';
 })
 export class CreateJobComponent {
 
-  jobType = '';
+  jobType = JobTypeSelections.regression;
 
 }

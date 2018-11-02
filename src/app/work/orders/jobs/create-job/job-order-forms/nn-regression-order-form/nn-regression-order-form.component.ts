@@ -12,9 +12,15 @@ export class NNRegressionOrderFormComponent implements OnInit {
   nnRegressionOrder: NNRegressionOrderModel;
   hiddenLayers: HiddenLayer[] = [];
 
+  learningRate: Number = 0;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onLearningRateSliderChange(event) {
+    console.log(event.value);
   }
 
 }

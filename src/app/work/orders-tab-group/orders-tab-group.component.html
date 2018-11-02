@@ -1,4 +1,7 @@
-<mat-tab-group #tabGroupListOrders (selectedTabChange)="tabChanged($event)">
+<mat-tab-group 
+#tabGroupListOrders 
+(selectedTabChange)="this.workService.tabOrdersTabGroupChanged($event)" 
+[(selectedIndex)]="this.workService.selectedTabOrdersTabGroup">
   <mat-tab label="Regression">
     <app-list-orders></app-list-orders>
   </mat-tab>

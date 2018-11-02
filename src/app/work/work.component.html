@@ -1,4 +1,6 @@
-<mat-tab-group>
+<mat-tab-group #tabGroupListOrders 
+               (selectedTabChange)="tabChanged($event)" 
+               [(selectedIndex)]="this.workService.selectedTabWork">
   <mat-tab label="Completed">
     <app-orders-tab-group></app-orders-tab-group>
   </mat-tab>

@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 
 // Custom
 import { HeaderComponent } from './header/header.component';
-import { ListOrdersComponent } from './work/orders/orders-tab-group/list-orders/list-orders.component';
+import { ListOrdersComponent } from './work/orders-tab-group/list-orders/list-orders.component';
 import { ListJobsComponent } from './work/orders/jobs/list-jobs/list-jobs.component';
 import { GlobalService } from './globals.service';
 import { MaterialModule } from './material.module';
@@ -17,8 +17,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { WorkService } from './work/work.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { WorkComponent } from './work/work.component';
-import { OrdersService } from './work/orders/orders.service';
-import { OrdersTabGroupComponent } from './work/orders/orders-tab-group/orders-tab-group.component';
+import { OrdersTabGroupComponent } from './work/orders-tab-group/orders-tab-group.component';
 import {
   NNRegressionOrderFormComponent
 } from './work/orders/jobs/create-job/job-order-forms/nn-regression-order-form/nn-regression-order-form.component';
@@ -45,7 +44,7 @@ import {
     AppRoutingModule,
     FlexLayoutModule
   ],
-  providers: [GlobalService, WorkService, OrdersService],
+  providers: [GlobalService, WorkService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

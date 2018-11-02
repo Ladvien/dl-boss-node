@@ -6,10 +6,24 @@ import { Job } from './orders/jobs/job.model';
 import { Order } from './orders/order.model';
 import { Outcome } from './orders/outcomes/outcome.model';
 
+enum WorkTabGroupSelections {
+    completed = 0,
+    create,
+    unassigned
+}
+
+enum OrderTabGroupSelection {
+  regression = 0,
+  categorical
+}
+
 @Injectable()
 export class WorkService {
 
   constructor(public globals: GlobalService, private http: HttpClient) {}
+
+  selectedTabOrdersTabGroup = OrderTabGroupSelection.regression;
+  selectedTabWork = WorkTabGroupSelections.create;
 
   getOrders = new Observable((observer) => {
     this.http.get(this.globals.bossAddress + '/retrieve/order')
@@ -23,6 +37,10 @@ export class WorkService {
       });
     });
   });
+
+  tabOrdersTabGroupChanged(event) {
+    console.log(event.tab);
+  }
 
   attachJobs (orders: Order[]) {
     const ordersWithJobs: Order[] = [];

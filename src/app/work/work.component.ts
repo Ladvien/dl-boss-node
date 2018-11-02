@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WorkService } from './work.service';
 
 @Component({
   selector: 'app-work',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WorkComponent implements OnInit {
 
-  constructor() { }
+  selectedTabIndex = 0;
+
+  constructor(public workService: WorkService) { }
 
   ngOnInit() {
+  }
+
+  tabChanged(event) {
+    console.log(this.selectedTabIndex);
   }
 
 }
