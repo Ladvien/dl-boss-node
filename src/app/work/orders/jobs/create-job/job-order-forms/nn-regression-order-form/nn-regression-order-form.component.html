@@ -1,69 +1,181 @@
+
+<mat-card>
+  <button mat-raised-button (click)="this.onSubmitClick()"
+  color="primary"
+  >Submit</button>
+</mat-card>
 <form>
-  <div class="form-container" fxLayout="row" fxLayoutGap="3.5%" fxLayoutAlign="center space-evenly">
-    <div fxFlex="80%" fxLayout="column" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="3.5%" fxLayoutAlign="center left">
-      <mat-form-field fxFlex>
-        <input matInput placeholder="Data filename">
-      </mat-form-field>
-      <div fxFlex>
-        <mat-form-field>
-          <input matInput placeholder="Project Name">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput placeholder="Dependent Variable">
-        </mat-form-field>
-      </div>
-      <mat-radio-group fxFlex>
-        <div mat-subheader class="form-item-title">Optimizer</div>
-        <div class="form-container" fxLayout="row" fxLayoutGap="3.5%" fxLayoutAlign="left space-evenly">
-          <mat-radio-button value="1">rmsprop</mat-radio-button>
-          <mat-radio-button value="2">adam</mat-radio-button>
-          <mat-radio-button value="2">nadam</mat-radio-button>
+  <div fxLayout="row" fxLayoutGap="5.5%" fxLayoutAlign="start stretch">
+    <div fxFlex="90%" fxLayout="column" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="3.5%" fxLayoutAlign="space-around left">
+
+      <mat-card class="form-container">
+        <div fxLayout="row" fxLayoutGap="5.5%" fxLayoutAlign="start space-around">
+          <div fxFlex>
+            <mat-card-title>
+              Inputs
+            </mat-card-title>
+            <mat-list>
+              <mat-list-item>
+                <mat-form-field fxFlex>
+                  <input matInput placeholder="Data filename" name="dataFilePath" [(ngModel)]="this.jobCandidate.dataFileName"
+                    (input)="this.inputChange($event.target)">
+                </mat-form-field>
+              </mat-list-item>
+              <mat-list-item>
+                <mat-form-field>
+                  <input matInput placeholder="Project Name" name="projectName" [(ngModel)]="this.jobCandidate.projectName"
+                    (input)="this.inputChange($event.target)">
+                </mat-form-field>
+              </mat-list-item>
+              <mat-list-item>
+                <mat-form-field>
+                  <input matInput placeholder="Dependent Variable" name="dependentVariable" [(ngModel)]="this.jobCandidate.dependentVariable"
+                    (input)="this.inputChange($event.target)">
+                </mat-form-field>
+              </mat-list-item>
+            </mat-list>
+          </div>
+          <div fxFlex>
+            <mat-card-title>
+              Session Config
+            </mat-card-title>
+            <mat-form-field>
+              <input matInput placeholder="Learning Rate" name="learningRate" [(ngModel)]="this.jobCandidate.learningRate"
+                type="number">
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput name="batchSize" [(ngModel)]="this.jobCandidate.batchSize" (input)="this.inputChange($event.target)"
+                placeholder="Batch size" type="number">
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput name="epochs" [(ngModel)]="this.jobCandidate.epochs" (input)="this.inputChange($event.target)"
+                placeholder="Epochs" type="number">
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput name="lastLayerActivator" [(ngModel)]="this.jobCandidate.lastLayerActivator" (input)="this.inputChange($event.target)"
+                placeholder="Last Layer Activation">
+            </mat-form-field>
+          </div>
         </div>
-      </mat-radio-group>
-      <div>
-        <mat-form-field>
-          <input matInput placeholder="Learning Rate">
-          <!-- {{ learningRateSlider.min }}
-        <mat-slider #learningRateSlider min="0.0001" max="0.9" step="0.001" color="primary"
-                    (change)="this.onLearningRateSliderChange($event)" >
-        </mat-slider>
-        {{ learningRateSlider.max }} -->
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput placeholder="Loss Function">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput placeholder="Batch size">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput placeholder="Epochs">
-        </mat-form-field>
+      </mat-card>
+
+
+      <div fxLayout="row" fxLayoutGap="5.5%" fxLayoutAlign="start stretch">
+        <mat-card>
+          <mat-card-title>
+            Optimizer
+          </mat-card-title>
+          <mat-list>
+            <mat-radio-group fxLayout="column" fxLayoutGap="3.5%" fxLayoutAlign="center space-around"
+              name="optimizer" class="example-radio-group" [(ngModel)]="this.jobCandidate.optimizer" (change)="this.inputChange($event)">
+              <mat-list-item>
+                <mat-radio-button value="rmsprop">rmsprop</mat-radio-button>
+              </mat-list-item>
+              <mat-list-item>
+                <mat-radio-button value="adam">adam</mat-radio-button>
+              </mat-list-item>
+              <mat-list-item>
+                <mat-radio-button value="nadam">nadam</mat-radio-button>
+              </mat-list-item>
+            </mat-radio-group>
+          </mat-list>
+        </mat-card>
+
+        <mat-card>
+          <mat-card-title>
+            Loss
+          </mat-card-title>
+          <mat-radio-group fxLayout="row" fxLayoutGap="3.5%" fxLayoutAlign="center space-around"
+            name="loss" class="example-radio-group" [(ngModel)]="this.jobCandidate.loss" (change)="this.inputChange($event)">
+            <mat-list>
+              <mat-list-item>
+                <mat-radio-button value="mse">Mean Squared Error</mat-radio-button>
+              </mat-list-item>
+              <mat-list-item>
+                <mat-radio-button value="mae">Mean Absolute Error</mat-radio-button>
+              </mat-list-item>
+              <mat-list-item>
+                <mat-radio-button value="categorical_crossentropy">Categorical Crossentropy</mat-radio-button>
+              </mat-list-item>
+            </mat-list>
+            <mat-list>
+              <mat-list-item>
+                <mat-radio-button value="binary_crossentropy">Binary Crossentropy</mat-radio-button>
+              </mat-list-item>
+              <mat-list-item>
+                <mat-radio-button value="mape">Mean Absolute Percentage</mat-radio-button>
+              </mat-list-item>
+              <mat-list-item>
+                <mat-radio-button value="msle">Mean Squared Logarithmic</mat-radio-button>
+              </mat-list-item>
+            </mat-list>
+          </mat-radio-group>
+        </mat-card>
       </div>
-      <mat-form-field>
-        <input matInput placeholder="Last Layer Activation">
-      </mat-form-field>
-      <div>
-        <mat-form-field>
-          <input matInput placeholder="L1">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput placeholder="L2">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput placeholder="Min Dependent Variable">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput placeholder="Max Dependent Variable">
-        </mat-form-field>
+
+
+
+      <div fxLayout="row" fxLayoutGap="5.5%" fxLayoutAlign="start stretch">
+
+        <div fxLayout="row" fxLayoutGap="5.5%" fxLayoutAlign="start stretch">
+          <mat-card>
+            <mat-card-title>
+              Normalization
+            </mat-card-title>
+            <mat-list>
+              <mat-list-item>
+                <mat-form-field>
+                  <input matInput name="l1" [(ngModel)]="this.jobCandidate.l1" (input)="this.inputChange($event.target)"
+                    placeholder="L1" type="number">
+                </mat-form-field>
+              </mat-list-item>
+              <mat-list-item>
+                <mat-form-field>
+                  <input matInput name="l2" [(ngModel)]="this.jobCandidate.l2" (input)="this.inputChange($event.target)"
+                    placeholder="L2" type="number">
+                </mat-form-field>
+              </mat-list-item>
+            </mat-list>
+          </mat-card>
+        </div>
+
+        <div fxLayout="row" fxLayoutGap="5.5%" fxLayoutAlign="start stretch">
+          <mat-card>
+            <mat-card-title>
+              Filters
+            </mat-card-title>
+            <mat-list>
+              <mat-list-item>
+                <mat-form-field>
+                  <input matInput placeholder="Min Dependent Variable" matInput name="minDependentVarValue" [(ngModel)]="this.jobCandidate.minDependentVarValue"
+                    (input)="this.inputChange($event.target)" type="number">
+                </mat-form-field>
+              </mat-list-item>
+              <mat-list-item>
+                <mat-form-field>
+                  <input matInput placeholder="Max Dependent Variable" matInput name="maxDependentVarValue" [(ngModel)]="this.jobCandidate.maxDependentVarValue"
+                  (input)="this.inputChange($event.target)" type="number">
+                </mat-form-field>
+              </mat-list-item>
+            </mat-list>
+          </mat-card>
+        </div>
+
       </div>
-      <mat-form-field>
-        <textarea matInput placeholder="Stuff here"></textarea>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-select placeholder="Select">
-          <mat-option value="option">Option</mat-option>
-        </mat-select>
-      </mat-form-field>
+
     </div>
   </div>
 </form>
+
+<!-- {{ learningRateSlider.min}} <mat-slider 
+                    fxFlex
+                    #learningRateSlider
+                    name="learningRateSlider" 
+                    min="0.0001" 
+                    max="0.2" 
+                    step="0.001" 
+                    color="primary"
+                    [(value)]="this.jobCandidate.learningRate"
+                    [(ngModel)]="this.jobCandidate.learningRate"
+                    (input)="sliderChange('learningRateSlider', $event)">
+        </mat-slider> {{ learningRateSlider.max }}  -->

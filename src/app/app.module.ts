@@ -1,10 +1,11 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { CreateJobComponent } from './work/orders/jobs/create-job/create-job.component';
 import { FormsModule } from '@angular/forms';
+import { BrowserModule, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
+import { GestureConfig } from '@angular/material';
 
 // Custom
 import { HeaderComponent } from './header/header.component';
@@ -37,14 +38,14 @@ import {
   ],
   imports: [
     BrowserModule,
-    FormsModule,
     BrowserAnimationsModule,
-    MaterialModule,
+    FormsModule,
     HttpClientModule,
     AppRoutingModule,
+    MaterialModule,
     FlexLayoutModule
   ],
-  providers: [GlobalService, WorkService],
+  providers: [GlobalService, WorkService, { provide: HAMMER_GESTURE_CONFIG, useClass: GestureConfig }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

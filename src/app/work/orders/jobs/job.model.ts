@@ -16,7 +16,7 @@ export interface Job {
         pcaComponents: Number;
         extraTreesKeepThreshd: Number;
         saveWeightsOnlyAtEnd: Boolean;
-        optimizer: Number;
+        optimizer: String;
         lastLayerActivator: String;
         learningRate: Number;
         l1: Number;

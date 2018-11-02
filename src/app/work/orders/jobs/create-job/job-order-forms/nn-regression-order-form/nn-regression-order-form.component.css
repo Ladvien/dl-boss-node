@@ -1,14 +1,7 @@
 .mat-card {
-    padding: 5px;
-    margin: 10px;
+    margin: 15px;
 }
 
 .form-container {
-    padding: 5px;
-    margin: 10px;
-    font-size: 12px;
-}
-
-.form-item-title {
-    color: grey;
+    padding: 10px;
 }

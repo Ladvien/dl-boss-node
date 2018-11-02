@@ -14,14 +14,42 @@ export class NNRegressionOrderFormComponent implements OnInit {
   nnRegressionOrder: NNRegressionOrderModel;
   hiddenLayers: HiddenLayer[] = [];
 
-  learningRate: Number = 0;
+  jobCandidate = <Job> {
+      'id': '',
+      'orderId': '',
+      'orderDate': new Date(),
+      'hiddenLayers': [],
+      'dataFileName': 'unknown',
+      'scriptName': 'nn.py',
+      'projectName': 'unknown',
+      'dependentVariable': 'unknown',
+      'crossValidateOnly': true,
+      'crossValidationCrossingType': 'neg_mean_squared_error',
+      'batchSize': 512,
+      'epochs': 1500,
+      'patienceRate': 0.05,
+      'slowLearningRate': 0,
+      'loss': 'mse',
+      'pcaComponents': -1,
+      'extraTreesKeepThreshd': 0,
+      'saveWeightsOnlyAtEnd': false,
+      'optimizer': 'rmsprop',
+      'lastLayerActivator': '',
+      'learningRate': 0.014,
+      'l1': 0.01,
+      'l2': 0.01,
+      'minDependentVarValue': 0,
+      'maxDependentVarValue': 999999,
+      'scalerType': 'standard'
+  };
 
   constructor(public workService: WorkService) { }
 
   ngOnInit() {
     this.workService.getMostRecentJob()
     .then((response) => {
-      console.log(<Job>response);
+      console.log(response);
+      this.jobCandidate = <Job>response;
     });
   }
 
@@ -29,4 +57,19 @@ export class NNRegressionOrderFormComponent implements OnInit {
     console.log(event.value);
   }
 
+  inputChange(target) {
+    console.log(target);
+  }
+
+  sliderChange(name, input) {
+    switch (name) {
+      case 'learningRateSlider':
+        this.jobCandidate.learningRate = input.value;
+        break;
+    }
+  }
+
+  onSubmitClick(jobForm) {
+    console.log(this.jobCandidate);
+  }
 }
