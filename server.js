@@ -169,7 +169,7 @@ app.get('/retrieve/:type/:id?/:param1?', (req, res) => {
                 });
                 break;
             case 'latest-job':
-                Job.find().limit(1).sort({$natural:-1})
+                Job.findOne().limit(1).sort({$natural:-1})
                 .then((response) => {
                     res.send(response);
                 });

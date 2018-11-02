@@ -38,6 +38,19 @@ export class WorkService {
     });
   });
 
+  getMostRecentJob() {
+    return new Promise((resolve, reject) => {
+      this.http.get(this.globals.bossAddress + '/retrieve/latest-job/').subscribe((job) => {
+        try {
+          if (!job) { throw {'error': 'Unable to retrieve latest job'}; }
+          resolve(job);
+        } catch (error) {
+          reject(error);
+        }
+      });
+    });
+  }
+
   tabOrdersTabGroupChanged(event) {
     console.log(event.tab);
   }

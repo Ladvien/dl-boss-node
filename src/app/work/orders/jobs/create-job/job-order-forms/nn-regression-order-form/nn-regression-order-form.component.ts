@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NNRegressionOrderModel } from './nn-regression-order.model';
 import { HiddenLayer } from '../hidden-layer.model';
+import { WorkService } from 'src/app/work/work.service';
+import { Job } from '../../../job.model';
 
 @Component({
   selector: 'app-nn-regression-order-form',
@@ -14,9 +16,13 @@ export class NNRegressionOrderFormComponent implements OnInit {
 
   learningRate: Number = 0;
 
-  constructor() { }
+  constructor(public workService: WorkService) { }
 
   ngOnInit() {
+    this.workService.getMostRecentJob()
+    .then((response) => {
+      console.log(<Job>response);
+    });
   }
 
   onLearningRateSliderChange(event) {
