@@ -128,21 +128,32 @@ app.post('/bored/:id', (req, res) => {
         let workerNodeId = req.params.id;
         console.log(`${workerNodeId} said it's bored.`);
         if (!workerNodeId) { throw {'error': 'No id provided.'}}
-        Order.findOne({ status: 'unassigned' }, {}, { sort: { 'created_at' : -1 } })
-        .then((err, order) => {
-            if (!order) throw Error({'error': 'No unassigned orders found.'});
-            console.log(`Found a work order, #${order._id}`)
-            // order.status = 'assigned';
-            // console.log(`Provided ${workerNodeId} with ${order.jobId}`);
-            // order.save()
-            // .then((doc) => {
-            //     console.log(`Updated the Order #${doc.id}'s status to ${order.status}`);
-            //     res.send(doc);
-            // });
+
+        Order.findOne({ status: 'unassigned' }, {}, { sort: { 'created_at' : -1 }})
+        .then(function(order) {
+            if(!order) {
+              throw new Error('no user with that id')
+            }
+            // do something with user
+            res.send(order)
+          }).catch(function(err) {
+            res.send({error: err})
         })
-        .catch((err) => {
-            res.send({'message': `No work to do.  Don't get used to it.`})
-        });
+        // Order.findOne({ status: 'unassigned' }, {}, { sort: { 'created_at' : -1 } })
+        // .then((err, order) => {
+        //     if (!order) throw Error({'error': 'No unassigned orders found.'});
+        //     console.log(`Found a work order, #${order._id}`)
+        //     // order.status = 'assigned';
+        //     // console.log(`Provided ${workerNodeId} with ${order.jobId}`);
+        //     // order.save()
+        //     // .then((doc) => {
+        //     //     console.log(`Updated the Order #${doc.id}'s status to ${order.status}`);
+        //     //     res.send(doc);
+        //     // });
+        // })
+        // .catch((err) => {
+        //     res.send({'message': `No work to do.  Don't get used to it.`})
+        // });
     } catch (err) {
         res.send({'error': 'Error with request shape.', err })
     }
