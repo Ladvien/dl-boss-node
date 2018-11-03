@@ -9,7 +9,7 @@ var schema = new mongoose.Schema({
 	"writePath": String,
 	"projectName": String,
 	"dataPath": String,
-	"depedentVariable": String,
+	"dependentVariable": String,
 	"crossValidateOnly": Boolean,
 	"crossValidationCrossingType": String,
 	"batchSize": Number,
