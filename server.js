@@ -128,9 +128,7 @@ app.post('/bored/:id', (req, res) => {
         let workerNodeId = req.params.id;
         console.log(`${workerNodeId} said it's bored.`);
         if (!workerNodeId) { throw {'error': 'No id provided.'}}
-        Order.find({ status: 'unassigned' }, {}, { sort: { 'created_at' : -1 } }, (err, order) => {
-            console.log(order);
-            if (!order) throw Error({'error': 'No unassigned orders found.'})
+        Order.findOne({ status: 'unassigned' }, {}, { sort: { 'created_at' : -1 } }, (err, order) => {
             console.log(`Found a work order, #${order._id}`)
             order.status = 'assigned';
             console.log(`Provided ${workerNodeId} with ${order.jobId}`);
@@ -140,9 +138,8 @@ app.post('/bored/:id', (req, res) => {
                 res.send(doc);
             });
         })
-        .orFail()
-        .catch((error) => {
-            console.log(error);
+        .catch((err) => {
+            res.send({'message': `No work to do.  Don't get used to it.`})
         });
     } catch (err) {
         res.send({'error': 'Error with request shape.', err })
