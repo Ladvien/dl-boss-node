@@ -134,6 +134,7 @@ app.post('/bored/:id', (req, res) => {
                 if (!order) throw {'error': 'No unassigned orders found.'}
             } catch (err) {
                 res.send(err);
+                return
             }
             console.log(`Found a work order, #${order._id}`)
             order.status = 'assigned';
