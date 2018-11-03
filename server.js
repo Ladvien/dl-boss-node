@@ -138,7 +138,11 @@ app.post('/bored/:id', (req, res) => {
                 console.log(`Updated the Order #${doc.id}'s status to ${order.status}`);
                 res.send(doc);
             });
-        }).orFail()
+        })
+        .orFail()
+        .catch((error) => {
+            console.log(error);
+        });
     } catch (err) {
         res.send({'error': 'Error with request shape.', err })
     }
