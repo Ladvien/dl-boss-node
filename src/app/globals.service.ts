@@ -4,7 +4,8 @@ import { Injectable } from '@angular/core';
 export class GlobalService {
 
   // Address of the Boss Node Server.
-  bossAddress: String = 'http://maddatum.com:3000';
+  // bossAddress: String = 'http://maddatum.com:3000';
+  bossAddress: String = 'http://localhost:3000';
 
   // Used to determine what type of Job.
   regressionLossTypes: String[] = ['mse', 'mae'];

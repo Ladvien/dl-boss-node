@@ -128,17 +128,19 @@ app.post('/bored/:id', (req, res) => {
         let workerNodeId = req.params.id;
         console.log(`${workerNodeId} said it's bored.`);
         if (!workerNodeId) { throw {'error': 'No id provided.'}}
-        Order.find({ status: 'unassigned' }, {}, { sort: { 'created_at' : -1 } }, (err, order) => {
-            console.log(order)
-            console.log(error);
-            console.log(`Found a work order, #${order._id}`)
-            order.status = 'assigned';
-            console.log(`Provided ${workerNodeId} with ${order.jobId}`);
-            order.save()
-            .then((doc) => {
-                console.log(`Updated the Order #${doc.id}'s status to ${order.status}`);
-                res.send(doc);
-            });
+        Order.findOne({ status: 'unassigned' }, {}, { sort: { 'created_at' : -1 } }, (err, order) => {
+            if (order) {
+                console.log(`Found a work order, #${order._id}`)
+                order.status = 'assigned';
+                console.log(`Provided ${workerNodeId} with ${order.jobId}`);
+                order.save()
+                .then((doc) => {
+                    console.log(`Updated the Order #${doc.id}'s status to ${order.status}`);
+                    res.send(doc);
+                });
+            } else {
+                res.send({'error': 'No Jobs or all are assigned.'})
+            }
         })
         .catch((err) => {
             res.send({'message': `No work to do.  Don't get used to it.`})
