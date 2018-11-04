@@ -128,7 +128,9 @@ app.post('/bored/:id', (req, res) => {
         let workerNodeId = req.params.id;
         console.log(`${workerNodeId} said it's bored.`);
         if (!workerNodeId) { throw {'error': 'No id provided.'}}
-        Order.findOne({ status: 'unassigned' }, {}, { sort: { 'created_at' : -1 } }, (err, order) => {
+        Order.find({ status: 'unassigned' }, {}, { sort: { 'created_at' : -1 } }, (err, order) => {
+            console.log(order)
+            console.log(JSON.pretty(order, undefined, 2));
             console.log(`Found a work order, #${order._id}`)
             order.status = 'assigned';
             console.log(`Provided ${workerNodeId} with ${order.jobId}`);
