@@ -38,6 +38,21 @@ export class WorkService {
     });
   });
 
+  createJob(job: Job) {
+    return new Promise((resolve, reject) => {
+      this.http.post<Job>(this.globals.bossAddress + '/job/create', job)
+      .subscribe((response) => {
+        console.log(response);
+        try {
+          if (!job) { throw {'error': 'Unable to retrieve latest job'}; }
+          resolve(job);
+        } catch (error) {
+          reject(error);
+        }
+      });
+    });
+  }
+
   getMostRecentJob() {
     return new Promise((resolve, reject) => {
       this.http.get(this.globals.bossAddress + '/retrieve/latest-job/').subscribe((job) => {

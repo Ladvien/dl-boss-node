@@ -1,8 +1,5 @@
-
 <mat-card>
-  <button mat-raised-button (click)="this.onSubmitClick()"
-  color="primary"
-  >Submit</button>
+  <button mat-raised-button (click)="this.onSubmitClick()" color="primary">Submit</button>
 </mat-card>
 <form>
   <div fxLayout="row" fxLayoutGap="5.5%" fxLayoutAlign="start stretch">
@@ -59,11 +56,27 @@
         </div>
       </mat-card>
 
-      <div fxLayout="row" fxLayoutGap="5.5%" fxLayoutAlign="start stretch">
-        <mat-card>
-          
-        </mat-card>
-      </div>
+      <mat-card>
+        <mat-card-title>
+          Hidden Layers
+        </mat-card-title>
+        <div fxLayout="row" fxLayoutGap="5.5%" fxLayoutAlign="start stretch">
+          <mat-list-item *ngFor="let layer of this.jobCandidate.hiddenLayers;let index = index;">
+            <mat-card>
+              <mat-form-field>
+                <input matInput [(ngModel)]="this.jobCandidate.hiddenLayers[index].activation" [ngModelOptions]="{standalone: true}">
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput type="number" [(ngModel)]="this.jobCandidate.hiddenLayers[index].widthModifier" [ngModelOptions]="{standalone: true}">
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput type="number" [(ngModel)]="this.jobCandidate.hiddenLayers[index].dropout" [ngModelOptions]="{standalone: true}">
+              </mat-form-field>
+              <!-- {{ layer.activation }}, {{ layer.widthModifier }}, {{ layer.dropout }} -->
+            </mat-card>
+          </mat-list-item>
+        </div>
+      </mat-card>
 
 
       <div fxLayout="row" fxLayoutGap="5.5%" fxLayoutAlign="start stretch">
@@ -72,8 +85,8 @@
             Optimizer
           </mat-card-title>
           <mat-list>
-            <mat-radio-group fxLayout="column" fxLayoutGap="3.5%" fxLayoutAlign="center space-around"
-              name="optimizer" class="example-radio-group" [(ngModel)]="this.jobCandidate.optimizer" (change)="this.inputChange($event)">
+            <mat-radio-group fxLayout="column" fxLayoutGap="3.5%" fxLayoutAlign="center space-around" name="optimizer"
+              class="example-radio-group" [(ngModel)]="this.jobCandidate.optimizer" (change)="this.inputChange($event)">
               <mat-list-item>
                 <mat-radio-button value="rmsprop">rmsprop</mat-radio-button>
               </mat-list-item>
@@ -91,8 +104,8 @@
           <mat-card-title>
             Loss
           </mat-card-title>
-          <mat-radio-group fxLayout="row" fxLayoutGap="3.5%" fxLayoutAlign="center space-around"
-            name="loss" class="example-radio-group" [(ngModel)]="this.jobCandidate.loss" (change)="this.inputChange($event)">
+          <mat-radio-group fxLayout="row" fxLayoutGap="3.5%" fxLayoutAlign="center space-around" name="loss" class="example-radio-group"
+            [(ngModel)]="this.jobCandidate.loss" (change)="this.inputChange($event)">
             <mat-list>
               <mat-list-item>
                 <mat-radio-button value="mse">Mean Squared Error</mat-radio-button>
@@ -160,7 +173,7 @@
               <mat-list-item>
                 <mat-form-field>
                   <input matInput placeholder="Max Dependent Variable" matInput name="maxDependentVarValue" [(ngModel)]="this.jobCandidate.maxDependentVarValue"
-                  (input)="this.inputChange($event.target)" type="number">
+                    (input)="this.inputChange($event.target)" type="number">
                 </mat-form-field>
               </mat-list-item>
             </mat-list>

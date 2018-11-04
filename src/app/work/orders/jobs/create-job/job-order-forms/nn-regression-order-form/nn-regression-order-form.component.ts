@@ -48,7 +48,8 @@ export class NNRegressionOrderFormComponent implements OnInit {
   ngOnInit() {
     this.workService.getMostRecentJob()
     .then((response) => {
-      console.log(response);
+      delete response['_id'];
+      delete response['__v'];
       this.jobCandidate = <Job>response;
     });
   }
@@ -70,6 +71,6 @@ export class NNRegressionOrderFormComponent implements OnInit {
   }
 
   onSubmitClick(jobForm) {
-    console.log(this.jobCandidate);
+    this.workService.createJob(this.jobCandidate);
   }
 }
