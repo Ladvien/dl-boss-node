@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Job } from './work/orders/jobs/job.model';
+import { Job } from './work/orders-tab-group/orders/jobs/job.model';
 
 @Component({
   selector: 'app-root',

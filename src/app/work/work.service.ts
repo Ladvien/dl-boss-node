@@ -2,9 +2,10 @@ import { Observable, Observer } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { GlobalService } from '../globals.service';
-import { Job } from './orders/jobs/job.model';
-import { Order } from './orders/order.model';
-import { Outcome } from './orders/outcomes/outcome.model';
+import { Job } from './orders-tab-group/orders/jobs/job.model';
+import { Order } from './orders-tab-group/orders/order.model';
+import { Outcome } from './orders-tab-group/orders/outcomes/outcome.model';
+import { Work } from './work.model';
 
 enum WorkTabGroupSelections {
     completed = 0,

@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { GlobalService } from '../../../globals.service';
 import { WorkService } from '../../work.service';
-import { Order } from '../../../work/orders/order.model';
+import { Order } from '../orders/order.model';
 
 @Component({
   selector: 'app-list-orders',
