@@ -1,11 +1,10 @@
+import { Job } from './work-type/orders-tab-group/jobs/job-order-forms/nn-regression-order-form/nn-regression-job.model';
 import { Observable, Observer } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { GlobalService } from '../globals.service';
-import { Job } from './orders-tab-group/orders/jobs/job.model';
-import { Order } from './orders-tab-group/orders/order.model';
-import { Outcome } from './orders-tab-group/orders/outcomes/outcome.model';
-import { Work } from './work.model';
+import { Order } from './work-type/orders-tab-group/order.model';
+import { Outcome } from './work-type/orders-tab-group/outcome.model';
 
 enum WorkTabGroupSelections {
     completed = 0,
@@ -22,6 +21,9 @@ enum OrderTabGroupSelection {
 export class WorkService {
 
   constructor(public globals: GlobalService, private http: HttpClient) {}
+
+  // Used to determine what Work is being run.
+  public selectedWorkType: String;
 
   selectedTabOrdersTabGroup = OrderTabGroupSelection.regression;
   selectedTabWork = WorkTabGroupSelections.create;

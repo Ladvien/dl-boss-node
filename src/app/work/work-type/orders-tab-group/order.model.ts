@@ -1,5 +1,6 @@
-import { Outcome } from '../orders/outcomes/outcome.model';
-import { Job } from '../orders/jobs/job.model';
+import { Job } from './jobs/job-order-forms/nn-regression-order-form/nn-regression-job.model';
+import { Outcome } from './outcome.model';
+
 
 export interface Order {
     id: String;

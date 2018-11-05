@@ -1,8 +1,8 @@
+import { Job } from './nn-regression-job.model';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NNRegressionOrderModel } from './nn-regression-order.model';
-import { HiddenLayer } from '../hidden-layer.model';
+import { HiddenLayer } from './hidden-layer.model';
 import { WorkService } from 'src/app/work/work.service';
-import { Job } from '../../../job.model';
 import { Observable, of } from 'rxjs';
 import { DataSource } from '@angular/cdk/table';
 import { MatTable, MatTableDataSource } from '@angular/material';

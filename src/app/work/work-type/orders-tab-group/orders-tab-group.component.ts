@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
-import { WorkService } from '../work.service';
+import { WorkService } from '../../work.service';
+
 
 @Component({
   selector: 'app-orders-tab-group',

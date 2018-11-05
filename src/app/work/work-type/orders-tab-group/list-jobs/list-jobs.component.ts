@@ -1,12 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { GlobalService } from '../../../globals.service';
-import { WorkService } from '../../work.service';
-import { Order } from '../orders/order.model';
+import { Order } from '../order.model';
+import { WorkService } from 'src/app/work/work.service';
+import { GlobalService } from 'src/app/globals.service';
 
 @Component({
-  selector: 'app-list-orders',
-  templateUrl: './list-orders.component.html',
-  styleUrls: ['./list-orders.component.css']
+  selector: 'app-list-jobs',
+  templateUrl: './list-jobs.component.html',
+  styleUrls: ['./list-jobs.component.css']
 })
 
 
