@@ -8,18 +8,12 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./work.component.css']
 })
 export class WorkComponent implements OnInit {
-
-  selectedTabIndex = 0;
   constructor(public workService: WorkService, private route: ActivatedRoute) { }
 
-  ngOnInit() {
-   this.route.params.subscribe(params => {
-      this.workService.selectedWorkType = <String>params;
-   });
-  }
+  ngOnInit() {}
 
   tabChanged(event) {
-    console.log(this.selectedTabIndex);
+    this.workService.setWorkType(event.index);
   }
 
 }

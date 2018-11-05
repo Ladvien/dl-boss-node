@@ -1,6 +1,7 @@
-<mat-tab-group #tabGroupListOrders (selectedTabChange)="this.workService.tabOrdersTabGroupChanged($event)"
-  [(selectedIndex)]="this.workService.selectedTabOrdersTabGroup">
-  <mat-tab label="Regression">
-    <app-completed-jobs></app-completed-jobs>
+<mat-tab-group #tabGroupListOrders 
+  (selectedTabChange)="this.tabChanged($event)">
+  <mat-tab *ngFor="let workType of this.workService.workTypeNames"
+           [label]="this.workService.workTypes[workType].label">
+    <app-work-status></app-work-status>
   </mat-tab>
 </mat-tab-group>

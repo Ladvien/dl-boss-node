@@ -6,17 +6,9 @@ import { Job } from './job-order-forms/nn-regression/order-form/del_nn-regressio
 import { Order } from './work-models/order.model';
 import { Outcome } from './work-models/outcome.model';
 
-
-
-enum WorkTabGroupSelections {
-    completed = 0,
-    create,
-    unassigned
-}
-
-enum OrderTabGroupSelection {
-  regression = 0,
-  categorical
+enum WorkTypes {
+  nnRegression = 0,
+  nnCategorical
 }
 
 @Injectable()
@@ -24,12 +16,13 @@ export class WorkService {
 
   constructor(public globals: GlobalService, private http: HttpClient) {}
 
-
   // Used to determine what Work is being run.
-  public selectedWorkType: String;
-
-  selectedTabOrdersTabGroup = OrderTabGroupSelection.regression;
-  selectedTabWork = WorkTabGroupSelections.create;
+  selectedWorkType: String;
+  workTypes = {
+    'nn-regression': { 'label': 'Regression', 'index': WorkTypes.nnRegression },
+    'nn-categorical': { 'label': 'Categorical', 'index': WorkTypes.nnCategorical }
+  };
+  workTypeNames = Object.keys(this.workTypes);
 
   getOrders = new Observable((observer) => {
     this.http.get(this.globals.bossAddress + '/retrieve/order')
@@ -44,12 +37,10 @@ export class WorkService {
     });
   });
 
-  onClickExpandToggle () {}
-
-  tabChanged(event) {
-    console.log(event.tab.textLabel);
+  setWorkType(newWorkType) {
+    this.selectedWorkType =  this.workTypeNames[newWorkType];
+    console.log(this.selectedWorkType);
   }
-
 
   createJob(job: Job) {
     return new Promise((resolve, reject) => {
@@ -77,10 +68,6 @@ export class WorkService {
         }
       });
     });
-  }
-
-  tabOrdersTabGroupChanged(event) {
-    console.log(event.tab);
   }
 
   attachJobs (orders: Order[]) {
@@ -134,7 +121,5 @@ export class WorkService {
       observer.next(ordersWithOutcomes);
     });
   }
-
-
 
 }
