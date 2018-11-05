@@ -1,5 +1,3 @@
-import { NNRegressionOrderFormComponent } from './work/work-type/orders-tab-group/jobs/job-order-forms/nn-regression-order-form/nn-regression-order-form.component';
-import { CreateJobComponent } from './work/work-type/orders-tab-group/jobs/create-job-forms/create-job.component';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
@@ -19,10 +17,12 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { WorkComponent } from './work/work.component';
 
 
-import { WorkTypeComponent } from './work/work-type/work-type.component';
-import { OrdersTabGroupComponent } from './work/work-type/orders-tab-group/orders-tab-group.component';
+import { OrdersTabGroupComponent } from './work/orders-tab-group/orders-tab-group.component';
 
-import { ListOrdersComponent } from './work/work-type/orders-tab-group/list-jobs/list-jobs.component';
+import { ListOrdersComponent } from './work/orders-tab-group/list-jobs/list-jobs.component';
+import { CreateJobComponent } from './work/orders-tab-group/job-forms/nn-regression/create-job-form/create-job.component';
+import { NNRegressionOrderFormComponent } from './work/orders-tab-group/job-forms/nn-regression/order-form/nn-regression-order-form.component';
+
 
 
 
@@ -35,8 +35,7 @@ import { ListOrdersComponent } from './work/work-type/orders-tab-group/list-jobs
     HomeComponent,
     WorkComponent,
     OrdersTabGroupComponent,
-    NNRegressionOrderFormComponent,
-    WorkTypeComponent
+    NNRegressionOrderFormComponent
   ],
   imports: [
     BrowserModule,

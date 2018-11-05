@@ -1,5 +1,7 @@
-import { Job } from './jobs/job-order-forms/nn-regression-order-form/nn-regression-job.model';
 import { Outcome } from './outcome.model';
+import { Job } from './job-forms/nn-regression/order-form/del_nn-regression-job.model';
+
+
 
 
 export interface Order {

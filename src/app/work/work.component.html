@@ -1,1 +1,9 @@
-<app-work-type></app-work-type>
+<mat-tab-group #tabGroupListOrders (selectedTabChange)="this.workService.tabOrdersTabGroupChanged($event)"
+  [(selectedIndex)]="this.workService.selectedTabOrdersTabGroup">
+  <mat-tab label="Regression">
+    <app-list-jobs></app-list-jobs>
+  </mat-tab>
+  <mat-tab label="Categorical">
+    <app-list-jobs></app-list-jobs>
+  </mat-tab>
+</mat-tab-group>

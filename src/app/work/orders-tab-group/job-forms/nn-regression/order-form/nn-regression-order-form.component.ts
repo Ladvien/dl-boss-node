@@ -1,4 +1,4 @@
-import { Job } from './nn-regression-job.model';
+import { Job } from './del_nn-regression-job.model';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NNRegressionOrderModel } from './nn-regression-order.model';
 import { HiddenLayer } from './hidden-layer.model';
