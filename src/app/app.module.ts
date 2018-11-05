@@ -15,13 +15,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { WorkService } from './work/work.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { WorkComponent } from './work/work.component';
-
-
-import { OrdersTabGroupComponent } from './work/orders-tab-group/orders-tab-group.component';
-
-import { ListOrdersComponent } from './work/orders-tab-group/list-jobs/list-jobs.component';
-import { CreateJobComponent } from './work/orders-tab-group/job-forms/nn-regression/create-job-form/create-job.component';
-import { NNRegressionOrderFormComponent } from './work/orders-tab-group/job-forms/nn-regression/order-form/nn-regression-order-form.component';
+import { ListOrdersComponent } from './work/jobs-completed/completed-jobs.component';
+import { NNRegressionOrderFormComponent } from './work/job-order-forms/nn-regression/order-form/nn-regression-order-form.component';
 
 
 
@@ -29,12 +24,10 @@ import { NNRegressionOrderFormComponent } from './work/orders-tab-group/job-form
 @NgModule({
   declarations: [
     AppComponent,
-    CreateJobComponent,
     HeaderComponent,
     ListOrdersComponent,
     HomeComponent,
     WorkComponent,
-    OrdersTabGroupComponent,
     NNRegressionOrderFormComponent
   ],
   imports: [

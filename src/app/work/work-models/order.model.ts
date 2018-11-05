@@ -1,5 +1,6 @@
 import { Outcome } from './outcome.model';
-import { Job } from './job-forms/nn-regression/order-form/del_nn-regression-job.model';
+import { Job } from '../job-order-forms/nn-regression/order-form/del_nn-regression-job.model';
+
 
 
 

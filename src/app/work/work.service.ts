@@ -2,9 +2,11 @@ import { Observable, Observer } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { GlobalService } from '../globals.service';
-import { Order } from './orders-tab-group/order.model';
-import { Job } from './orders-tab-group/job-forms/nn-regression/order-form/del_nn-regression-job.model';
-import { Outcome } from './orders-tab-group/outcome.model';
+import { Job } from './job-order-forms/nn-regression/order-form/del_nn-regression-job.model';
+import { Order } from './work-models/order.model';
+import { Outcome } from './work-models/outcome.model';
+
+
 
 enum WorkTabGroupSelections {
     completed = 0,

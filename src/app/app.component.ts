@@ -1,6 +1,8 @@
 
 import { Component } from '@angular/core';
-import { Job } from './work/orders-tab-group/job-forms/nn-regression/order-form/del_nn-regression-job.model';
+import { Job } from './work/job-order-forms/nn-regression/order-form/del_nn-regression-job.model';
+
+
 
 
 
