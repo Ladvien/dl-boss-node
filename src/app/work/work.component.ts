@@ -10,7 +10,11 @@ import { ActivatedRoute } from '@angular/router';
 export class WorkComponent implements OnInit {
   constructor(public workService: WorkService, private route: ActivatedRoute) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.route.params.subscribe((params) => {
+      this.workService.selectedWorkType = <String>params['type'];
+    });
+  }
 
   tabChanged(event) {
     this.workService.setWorkType(event.index);

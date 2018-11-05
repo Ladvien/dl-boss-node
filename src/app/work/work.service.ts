@@ -8,7 +8,10 @@ import { Outcome } from './work-models/outcome.model';
 
 enum WorkTypes {
   nnRegression = 0,
-  nnCategorical
+  nnCategorical,
+  mergeData,
+  encodeData,
+  featureReduction
 }
 
 @Injectable()
@@ -20,7 +23,10 @@ export class WorkService {
   selectedWorkType: String;
   workTypes = {
     'nn-regression': { 'label': 'Regression', 'index': WorkTypes.nnRegression },
-    'nn-categorical': { 'label': 'Categorical', 'index': WorkTypes.nnCategorical }
+    'nn-categorical': { 'label': 'Categorical', 'index': WorkTypes.nnCategorical },
+    'merge-data': { 'label': 'Merge Data', 'index': WorkTypes.mergeData },
+    'encode-data': { 'label': 'Encode Data', 'index': WorkTypes.encodeData },
+    'feature-reduction': { 'label': 'Feature Reduction', 'index': WorkTypes.featureReduction }
   };
   workTypeNames = Object.keys(this.workTypes);
 

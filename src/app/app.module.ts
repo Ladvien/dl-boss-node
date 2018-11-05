@@ -15,22 +15,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { WorkService } from './work/work.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { WorkComponent } from './work/work.component';
-import { ListOrdersComponent } from './work/jobs-completed/completed-jobs.component';
 import { NNRegressionOrderFormComponent } from './work/job-order-forms/nn-regression/order-form/nn-regression-order-form.component';
-import { WorkStatusComponent } from './work/work-status/work-status.component';
-
-
-
+import { NNRegressionCompletedComponent } from './work/jobs-completed/nn-regression/nn-regression-completed.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    ListOrdersComponent,
     HomeComponent,
     WorkComponent,
     NNRegressionOrderFormComponent,
-    WorkStatusComponent
+    NNRegressionCompletedComponent
   ],
   imports: [
     BrowserModule,

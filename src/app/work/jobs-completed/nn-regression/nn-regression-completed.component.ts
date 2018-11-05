@@ -1,16 +1,16 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Order } from '../work-models/order.model';
+import { Order } from '../../work-models/order.model';
 import { WorkService } from 'src/app/work/work.service';
 import { GlobalService } from 'src/app/globals.service';
 
 @Component({
-  selector: 'app-completed-jobs',
-  templateUrl: './completed-jobs.component.html',
-  styleUrls: ['./completed-jobs.component.css']
+  selector: 'app-nn-regression-completed',
+  templateUrl: './nn-regression-completed.component.html',
+  styleUrls: ['./nn-regression-completed.component.css']
 })
 
 
-export class ListOrdersComponent implements OnInit, OnDestroy {
+export class NNRegressionCompletedComponent implements OnInit, OnDestroy {
 
   expanded: Boolean = true;
   panelOpenState: Boolean = false;
